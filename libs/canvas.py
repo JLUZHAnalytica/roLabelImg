@@ -129,7 +129,10 @@ class Canvas(QWidget):
                     color = self.current.line_color
                     self.overrideCursor(CURSOR_POINT)
                     self.current.highlightVertex(0, Shape.NEAR_VERTEX)
-                self.line[1] = pos
+                #设置宽高比例为 1:10
+                height = pos.x() - self.line[0].x()
+                width = height * 10
+                self.line[1] = QPointF(self.line[0].x() + width , self.line[0].y() + height)
                 self.line.line_color = color
                 self.repaint()
                 self.current.highlightClear()
