@@ -136,7 +136,7 @@ class Canvas(QWidget):
                 self.line.line_color = color
                 self.repaint()
                 self.current.highlightClear()
-                self.status.emit("width is %d, height is %d." % (pos.x()-self.line[0].x(), pos.y()-self.line[0].y()))
+                self.status.emit("width is %d, height is %d." % (width, height))
             return
 
         # Polygon copy moving.
@@ -321,9 +321,9 @@ class Canvas(QWidget):
         self.update()
 
     def selectShapePoint(self, point):
-        """Select the first shape created which contains this point."""
+        """Select the first shape created which contains this point.选择创建的第一个包含此点的形状。"""
         self.deSelectShape()
-        if self.selectedVertex():  # A vertex is marked for selection.
+        if self.selectedVertex():  # A vertex is marked for selection.标记顶点以供选择。
             index, shape = self.hVertex, self.hShape
             shape.highlightVertex(index, shape.MOVE_VERTEX)
 
